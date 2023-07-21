@@ -1,6 +1,5 @@
 package com.aiktb.kuromojiapi;
 
-import com.atilika.kuromoji.ipadic.Token;
 import com.atilika.kuromoji.ipadic.Tokenizer;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,14 @@ public class KuromojiController {
     }
 
     @PostMapping("/")
-    public List<Token> getUser(@RequestParam(value = "text") String text) {
-        return tokenizer.tokenize(text);
+    public List<KuromojiToken> tokenize(@RequestParam(value = "text") String text) {
+        return tokenizer.tokenize(text).stream().map(token -> new KuromojiToken(
+                token.getPosition(),
+                token.getSurface(),
+                token.getReading()
+        )).toList();
     }
 
+    record KuromojiToken(int word_position, String surface_from, String reading) {
+    }
 }
