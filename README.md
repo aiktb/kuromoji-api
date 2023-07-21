@@ -25,7 +25,7 @@ POST https://api.aiktb.com/tokenizer/?text=寿司
 ```JSON
 [
   {
-    "word_position": 0,
+    "word_position": 1,
     "surface_from": "寿司",
     "reading": "スシ"
   }

@@ -20,7 +20,7 @@ public class KuromojiController {
     @PostMapping("/")
     public List<KuromojiToken> tokenize(@RequestParam(value = "text") String text) {
         return tokenizer.tokenize(text).stream().map(token -> new KuromojiToken(
-                token.getPosition(),
+                token.getPosition() + 1,
                 token.getSurface(),
                 token.getReading()
         )).toList();
