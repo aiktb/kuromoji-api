@@ -17,7 +17,12 @@ baseUri: https://api.aiktb.com/tokenizer
 ### Input
 
 ```bash
-POST https://api.aiktb.com/tokenizer/?text=寿司
+POST https://api.aiktb.com/tokenizer
+
+Request Body:
+{
+  "text": "寿司"
+}
 ```
 
 ### Output

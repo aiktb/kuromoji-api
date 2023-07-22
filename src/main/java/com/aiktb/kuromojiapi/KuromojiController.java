@@ -17,8 +17,8 @@ public class KuromojiController {
     }
 
     @PostMapping("/tokenizer")
-    public List<List<KuromojiToken>> tokenize(@RequestBody RequestBodyData textArray) {
-        return textArray.arrayData().stream().map(tokenizer::tokenize).map(tokenList -> tokenList.stream().map(KuromojiToken::new).toList()).toList();
+    public List<KuromojiToken> tokenize(@RequestBody Text text) {
+        return tokenizer.tokenize(text.text).stream().map(KuromojiToken::new).toList();
     }
 
     record KuromojiToken(int word_position, String surface_from, String reading) {
@@ -26,7 +26,5 @@ public class KuromojiController {
             this(token.getPosition() + 1, token.getSurface(), token.getReading());
         }
     }
-
-    record RequestBodyData(List<String> arrayData) {
-    }
+    record Text(String text) {}
 }
