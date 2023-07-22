@@ -21,7 +21,8 @@ public class KuromojiController {
         return tokenizer.tokenize(text.text).stream().map(KuromojiToken::new).toList();
     }
 
-    record KuromojiToken(int word_position, String surface_from, String reading) {
+    // Temporary measures: kuromoji.js has a typo, "from"->"form"
+    record KuromojiToken(int word_position, String surface_form, String reading) {
         public KuromojiToken(Token token) {
             this(token.getPosition() + 1, token.getSurface(), token.getReading());
         }

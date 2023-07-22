@@ -31,7 +31,7 @@ Request Body:
 [
   {
     "word_position": 1,
-    "surface_from": "寿司",
+    "surface_form": "寿司",
     "reading": "スシ"
   }
 ]
